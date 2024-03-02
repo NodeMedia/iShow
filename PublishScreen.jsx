@@ -34,7 +34,7 @@ function PublishScreen({ route, navigation }) {
                 url={url}
                 audioParam={{
                     codecid: NodePublisher.NMC_CODEC_ID_AAC,
-                    profile: 0,
+                    profile: NodePublisher.NMC_PROFILE_AUTO,
                     samplerate: 48000,
                     channels: 1,
                     bitrate: 64 * 1000,
