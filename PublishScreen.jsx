@@ -18,6 +18,11 @@ const actions = [
         text: "Torch",
         name: "bt_torch",
         position: 3
+    },
+    {
+        text: "Mute",
+        name: "bt_mute",
+        position: 4
     }
 ];
 
@@ -25,6 +30,7 @@ function PublishScreen({ route, navigation }) {
     const { url } = route.params;
     const [frontCamera, setFrontCamera] = useState(true);
     const [torchEnable, setTorchEnable] = useState(false);
+    const [mute, setMute] = useState(false);
     const np = useRef(null);
     return (
         <View style={{ flex: 1 }}>
@@ -52,6 +58,7 @@ function PublishScreen({ route, navigation }) {
                 denoiseEnable={true}
                 torchEnable={torchEnable}
                 keyFrameInterval={2}
+                volume={mute ? 0.0 : 1.0}
                 videoOrientation={NodePublisher.VIDEO_ORIENTATION_PORTRAIT}
             ></NodePublisher >
             <FloatingAction
@@ -66,6 +73,9 @@ function PublishScreen({ route, navigation }) {
                             break;
                         case "bt_torch":
                             setTorchEnable(!torchEnable);
+                            break;
+                        case "bt_mute":
+                            setMute(!mute);
                             break;
                     }
                 }}
